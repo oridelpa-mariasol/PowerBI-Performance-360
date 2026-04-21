@@ -1,9 +1,10 @@
-Se procedio a generar mediante IA - Gemini la base de datos ficticia.  
-Se le indico mediante un Prompt que tablas necesitabamos y sus componentes para que genere campos aleatorios, 
+🗄️ Arquitectura del Modelo de Datos (Actualizado)
+Se procedió a generar mediante IA - Gemini una base de datos ficticia de alta fidelidad. Se diseñó un modelo relacional robusto (Esquema en Estrella) para simular la operación real de una distribuidora.
 
 1. Ventas (Fact_Sales)
 Es el núcleo del modelo donde se registran las transacciones.
-Campos: Nro_Fc (PK), Cod_Producto (FK), Precio_Venta, Cod_Vendedor (FK), Cantidad, Venta_Total, Canal (Digital/Presencial), Cod_Forma_Pago (FK).
+
+Campos: Nro_Fc (PK), Fecha, Cod_Producto (FK), Cod_Cliente (FK), Cod_Vendedor (FK), Precio_Venta, Cantidad, Venta_Total, Canal (Digital/Presencial), Cod_Forma_Pago (FK).
 
 2. Vendedores (Dim_Staff)
 Campos: Cod_Vendedor (PK), Cédula, Nombre_Completo, Teléfono, Email.
@@ -17,17 +18,21 @@ Campos: Cod_Proveedor (PK), Nombre, Localidad, País, Tipo_Compra, Forma_Pago_Pr
 5. Formas de Pago (Dim_PaymentMethods)
 Campos: Cod_Forma_Pago (PK), Descripción.
 
-6.  Clientes (Dim_Customers)
-Campos: CI_RUT (PK), Tipo (Final/Empresa), Nombre, Fecha_Nacimiento, Email, Celular, Acepta_Mailing (Booleano).
+6. Clientes (Dim_Customers)
+Campos: Cod_Cliente (PK), CI_RUT, Tipo (Final/Empresa), Nombre, Fecha_Nacimiento, Email, Celular, Acepta_Mailing (Si/No).
 
 7. Seguimientos (Fact_CRM)
-Permite medir el desempeño comercial previo a la conversión.
-Campos: Fecha, Cod_Vendedor (FK), Tipo_Comunicación (WhatsApp, Llamada, Visita).
+Mide la actividad comercial previa a la conversión, conectando vendedores con clientes específicos.
+
+Campos: Fecha, Cod_Vendedor (FK), Cod_Cliente (FK), Tipo_Comunicación (WhatsApp, Llamada, Visita).
 
 🚀 Objetivos del Análisis
+Conversión y Performance: Análisis de la relación entre los seguimientos realizados a cada cliente y las ventas efectivamente cerradas.
 
- - Conversión y Performance: Relación entre los seguimientos realizados por el vendedor y las ventas efectivas.
- - Rentabilidad: Cálculo de márgenes brutos cruzando datos de Costo (Productos) vs. Venta_Total (Ventas).
- - Omnicanalidad: Comparativa de rendimiento entre canales digitales y presenciales.
+Rentabilidad: Cálculo de márgenes brutos cruzando datos de Costo de productos versus la Venta_Total.
+
+Omnicanalidad: Comparativa de rendimiento y volúmenes de facturación entre canales digitales y presenciales.
+
+Fidelización: Seguimiento del comportamiento de compra por cliente mediante su código identificador único.
 
 
