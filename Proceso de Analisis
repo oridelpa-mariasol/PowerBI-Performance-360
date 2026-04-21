@@ -1,0 +1,33 @@
+Se procedio a generar mediante IA - Gemini la base de datos ficticia.  
+Se le indico mediante un Prompt que tablas necesitabamos y sus componentes para que genere campos aleatorios, 
+
+1. Ventas (Fact_Sales)
+Es el núcleo del modelo donde se registran las transacciones.
+Campos: Nro_Fc (PK), Cod_Producto (FK), Precio_Venta, Cod_Vendedor (FK), Cantidad, Venta_Total, Canal (Digital/Presencial), Cod_Forma_Pago (FK).
+
+2. Vendedores (Dim_Staff)
+Campos: Cod_Vendedor (PK), Cédula, Nombre_Completo, Teléfono, Email.
+
+3. Productos (Dim_Products)
+Campos: Cod_Producto (PK), Nombre_Producto, Rubro, Marca, Costo, Cod_Proveedor (FK).
+
+4. Proveedores (Dim_Suppliers)
+Campos: Cod_Proveedor (PK), Nombre, Localidad, País, Tipo_Compra, Forma_Pago_Prov.
+
+5. Formas de Pago (Dim_PaymentMethods)
+Campos: Cod_Forma_Pago (PK), Descripción.
+
+6.  Clientes (Dim_Customers)
+Campos: CI_RUT (PK), Tipo (Final/Empresa), Nombre, Fecha_Nacimiento, Email, Celular, Acepta_Mailing (Booleano).
+
+7. Seguimientos (Fact_CRM)
+Permite medir el desempeño comercial previo a la conversión.
+Campos: Fecha, Cod_Vendedor (FK), Tipo_Comunicación (WhatsApp, Llamada, Visita).
+
+🚀 Objetivos del Análisis
+
+ - Conversión y Performance: Relación entre los seguimientos realizados por el vendedor y las ventas efectivas.
+ - Rentabilidad: Cálculo de márgenes brutos cruzando datos de Costo (Productos) vs. Venta_Total (Ventas).
+ - Omnicanalidad: Comparativa de rendimiento entre canales digitales y presenciales.
+
+
